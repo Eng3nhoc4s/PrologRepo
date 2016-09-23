@@ -40,23 +40,30 @@ parent(luisa, sara).
 parent(luisa, vanessa).
 
 % Relationships
-mother(Mother,Child):-
-	parent(Mother,Child),
+mother(Mother, Child):-
+	parent(Mother, Child),
 	female(Mother).
 
-father(Father,Child):-
-	parent(Father,Child),
+father(Father, Child):-
+	parent(Father, Child),
 	male(Father).
 
-brother(Person1,Person2):-
-	parent(Parent,Person1),
-	parent(Parent,Person2),
-	Person1 \= Person2.
+brother(Son1, Son2):-
+	male(Son2),
+	parent(Parent, Son1),
+	parent(Parent, Son2),
+	Son1 \= Son2.
 
-grandfather(Person):-
-	father(Person, Child),
-	(father(Child,_);mother(Child,_)).
+sister(Son1, Son2):-
+	female(Son2),
+	parent(Parent, Son1),
+	parent(Parent, Son2),
+	Son1 \= Son2.
 
-grandmother(Person):-
-	mother(Person, Child),
-	(father(Child,_);mother(Child,_)).
+grandfather(Grandfather, Child):-
+	father(Grandfather, Child),
+	(father(Child,_) ; mother(Child,_)).
+
+grandmother(Grandmother, Child):-
+	mother(Grandmother, Child),
+	(father(Child,_) ; mother(Child,_)).
