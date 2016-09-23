@@ -5,6 +5,7 @@ male(antonio).
 male(eduardo).
 male(lucio).
 male(luis).
+male(joaquim).
 
 % Females
 female(fatima).
