@@ -1,5 +1,6 @@
 % Albuns
 
+album('Rodrigo', 'So Vinil').
 album('R. Stevie Moore', 'Manuscription').
 album('Lane Steinberg', 'Manuscription').
 
@@ -14,7 +15,7 @@ album('The Legendary Stardust Cowboy', 'Rock-It to Stardom').
 
 
 % Formatos dos albuns
-
+vinil('So Vinil').
 vinil('Rock-It to Stardom').
 vinil('Walking on the Moon').
 cd('God Bless Tiny Tim').
@@ -92,3 +93,39 @@ so_tem_cassete(A):-
 colaborou(A,B):-
 	colabora(A,B).
 
+% d)
+solo(A):-
+	album(A,_),
+	\+ colaborou(A,_).
+
+% e)
+todos_os_formatos(A):-
+	album(A,B),
+	vinil(B),
+	cd(B),
+	cassete(B),
+	mp3(B).
+
+% f)
+so_vinil(B):-
+	album(_,B),
+	vinil(B),
+	\+ (cd(B);cassete(B);mp3(B)).
+
+so_cd(B):-
+	album(_,B),
+	cd(B),
+	\+ (vinil(B);cassete(B);mp3(B)).
+
+so_cassete(B):-
+	album(_,B),
+	cassete(B),
+	\+ (vinil(B);cd(B);mp3(B)).
+
+so_mp3(B):-
+	album(_,B),
+	mp3(B),
+	\+ (vinil(B);cd(B);cassete(B)).
+
+um_so_formato(B):-
+	(so_vinil(B);so_cd(B);so_cassete(B);so_mp3(B)).
