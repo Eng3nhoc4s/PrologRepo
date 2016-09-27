@@ -2,7 +2,6 @@
 
 album('R. Stevie Moore', 'Manuscription').
 album('Lane Steinberg', 'Manuscription').
-album('Plesinho Sensei', 'Manuscription').
 
 album('R. Stevie Moore', 'The Yung & Moore Show').
 album('Yukio Yung', 'The Yung & Moore Show').
@@ -76,4 +75,20 @@ maisQueDoisColabs:-
 	nl,
 	fail.
 
+% EXERCICIO 2
+%
+% a)
+tem_cassete(A):-
+	album(A,M),
+	cassete(M).
+
+% b)
+so_tem_cassete(A):-
+	album(A,M),
+	cassete(M),
+	\+ (album(A,B), (vinil(B) ; cd(B) ; mp3(B))).
+
+% c)
+colaborou(A,B):-
+	colabora(A,B).
 
