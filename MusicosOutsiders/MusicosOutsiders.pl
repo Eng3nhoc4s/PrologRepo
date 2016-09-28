@@ -1,6 +1,10 @@
 % Albuns
 
-album('Rodrigo', 'So Vinil').
+album('Filipe','File da Bawss - Mixtape').
+album('Rodrigo Ples', 'File da Bawss - Mixtape').
+
+
+album('Rodrigo', 'Paciji Ples').
 album('R. Stevie Moore', 'Manuscription').
 album('Lane Steinberg', 'Manuscription').
 
@@ -15,16 +19,21 @@ album('The Legendary Stardust Cowboy', 'Rock-It to Stardom').
 
 
 % Formatos dos albuns
+vinil('File da Bawss - Mixtape').
 vinil('So Vinil').
 vinil('Rock-It to Stardom').
 vinil('Walking on the Moon').
+cd('File da Bawss - Mixtape').
 cd('God Bless Tiny Tim').
-cd('Walking on the Moon').
+cd('Walking On the Moon').
 cd('Autonervous').
 cd('Manuscription').
 cassete('The Yung & Moore Show').
 cassete('The Human Horn').
+cassete('File da Bawss - Mixtape').
 mp3('Walking on the Moon').
+mp3('Paciji Ples').
+mp3('File da Bawss - Mixtape').
 
 % EXERCICIO 1
 %
@@ -87,6 +96,7 @@ tem_cassete(A):-
 so_tem_cassete(A):-
 	album(A,M),
 	cassete(M),
+	B \= M,
 	\+ (album(A,B), (vinil(B) ; cd(B) ; mp3(B))).
 
 % c)
@@ -108,24 +118,31 @@ todos_os_formatos(A):-
 
 % f)
 so_vinil(B):-
-	album(_,B),
 	vinil(B),
-	\+ (cd(B);cassete(B);mp3(B)).
+	\+ cd(B),
+	\+ cassete(B),
+	\+ mp3(B).
 
 so_cd(B):-
-	album(_,B),
 	cd(B),
-	\+ (vinil(B);cassete(B);mp3(B)).
+	\+ vinil(B),
+	\+ cassete(B),
+	\+ mp3(B).
 
 so_cassete(B):-
-	album(_,B),
 	cassete(B),
-	\+ (vinil(B);cd(B);mp3(B)).
+	\+ vinil(B),
+	\+ cd(B),
+	\+ mp3(B).
 
 so_mp3(B):-
-	album(_,B),
 	mp3(B),
-	\+ (vinil(B);cd(B);cassete(B)).
+	\+ vinil(B),
+	\+ cd(B),
+	\+ cassete(B).
 
 um_so_formato(B):-
-	(so_vinil(B);so_cd(B);so_cassete(B);so_mp3(B)).
+	so_vinil(B);
+	so_cd(B);
+	so_cassete(B);
+	so_mp3(B).
