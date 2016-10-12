@@ -2,11 +2,13 @@
 
 album('Filipe','File da Bawss - Mixtape').
 album('Rodrigo Ples', 'File da Bawss - Mixtape').
+album('Lane Steinberg', 'File da Bawss - Mixtape').
 
 
 album('Rodrigo', 'Paciji Ples').
 album('R. Stevie Moore', 'Manuscription').
 album('Lane Steinberg', 'Manuscription').
+album('Terceiro Colaborador', 'Manuscription').
 
 album('R. Stevie Moore', 'The Yung & Moore Show').
 album('Yukio Yung', 'The Yung & Moore Show').
@@ -73,17 +75,13 @@ musicosDoVinil:-
 musicosDoVinil.
 
 % i)
-maisQueDoisColabs:-
-	album(A,_),
+maisQueDoisColabs(A):-
+%	album(A,_),
 	colabora(A,C),
         colabora(A,D),
 	colabora(A,E),
-	A \= C,	A \= D,	A \= E,
 	C \= D, C \= E,
-	D \= E,
-	write(A),
-	nl,
-	fail.
+	D \= E.
 
 % EXERCICIO 2
 %
