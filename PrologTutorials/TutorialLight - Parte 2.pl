@@ -164,3 +164,10 @@ max([P,S|R],M) :-
 % O predicado bagof/3 é um pouco diferente do findall(X,O,L), no que
 % concerne o tratamento das variáveis não instanciadas no segundo
 % argumento O que não aparecem em X.
+
+
+
+% SETOF/3
+
+% O predicado setoff/3 funciona exctamente como o bagof mas elimina as
+% repetições e ordena os resultados.
