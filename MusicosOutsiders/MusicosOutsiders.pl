@@ -2,12 +2,17 @@
 
 album('R. Stevie Moore', 'Manuscription').
 album('Lane Steinberg', 'Manuscription').
-album('R. Stevie Moore', 'The Yung & Moore Show').
-album('R. Stevie Moore', 'Autonervous').
 
+album('Yukio Yung', 'Manuscription').
+
+album('R. Stevie Moore', 'The Yung & Moore Show').
 album('Yukio Yung', 'The Yung & Moore Show').
+
+
 album('Jessie Evans', 'Autonervous').
 album('Bettina Koster', 'Autonervous').
+album('R. Stevie Moore', 'Autonervous').
+
 album('Lucia Pamela', 'Walking on the Moon').
 album('Shooby Taylor', 'The Human Horn').
 album('Tiny Tim', 'God Bless Tiny Tim').
@@ -33,43 +38,17 @@ mp3('Walking on the Moon').
 %
 % c) album('R. Stevie Moore', F), album(Colaborator, F).
 %
-% d)
-colabora(Art1,Art2):-
-	album(Art1, Alb1),
-	album(Art2, Alb1),
-	Art1 \= Art2.
-
-albumSingleArtist:-
-	album(A,B),
-	\+ colabora(A,_),
-	write(B),
-	nl,
-	fail.
-albumSingleArtist.
-
-% e) album(A,_), \+ colabora(A,_).
+% d) album(_,B), \+ (album(A,B), album(C,B), A \= C).
+%
+% e) album(A,_), \+ (album(A,B), album(C,B), A \= C).
 %
 % f) album (A,_).
 %
-% g) album(_,A),cassete(A).
+% g) cassete(A), \+ (vinil(A); cd(A); mp3(A)).
 %
-% h)
-musicosDoVinil:-
-	album(A,B),
-	vinil(B),
-	write(A),
-	nl,
-	fail.
-musicosDoVinil.
-
-% i)
-maisQueDoisColabs(Art1):-
-	colabora(Art1,Art2),
-	colabora(Art1,Art3),
-	Art2 \= Art3.
-
-
-
+% h) album(X,_), \+ (album(X,A) ,(cassete(A); cd(A); mp3(A))).
+%
+% i) colabora(Art1, Art2), colabora(Art1, Art3), colabora(Art1, Art4), Art2 \= Art3, Art2 \= Art4, Art3 \= Art4.
 
 % EXERCICIO 2
 %
@@ -86,13 +65,15 @@ so_tem_cassete(A):-
 	\+ (album(A,B), (vinil(B) ; cd(B) ; mp3(B))).
 
 % c)
-colaborou(A,B):-
-	colabora(A,B).
+colabora(Art1,Art2):-
+	album(Art1, Alb1),
+	album(Art2, Alb1),
+	Art1 \= Art2.
 
 % d)
 solo(A):-
 	album(A,_),
-	\+ colaborou(A,_).
+	\+ colabora(A,_).
 
 % e)
 todos_os_formatos(A):-
