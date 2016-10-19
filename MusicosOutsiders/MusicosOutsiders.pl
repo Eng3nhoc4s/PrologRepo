@@ -1,16 +1,10 @@
 % Albuns
 
-album('Filipe','File da Bawss - Mixtape').
-album('Rodrigo Ples', 'File da Bawss - Mixtape').
-album('Lane Steinberg', 'File da Bawss - Mixtape').
-
-
-album('Rodrigo', 'Paciji Ples').
 album('R. Stevie Moore', 'Manuscription').
 album('Lane Steinberg', 'Manuscription').
-album('Terceiro Colaborador', 'Manuscription').
-
 album('R. Stevie Moore', 'The Yung & Moore Show').
+album('R. Stevie Moore', 'Autonervous').
+
 album('Yukio Yung', 'The Yung & Moore Show').
 album('Jessie Evans', 'Autonervous').
 album('Bettina Koster', 'Autonervous').
@@ -21,21 +15,15 @@ album('The Legendary Stardust Cowboy', 'Rock-It to Stardom').
 
 
 % Formatos dos albuns
-vinil('File da Bawss - Mixtape').
-vinil('So Vinil').
 vinil('Rock-It to Stardom').
 vinil('Walking on the Moon').
-cd('File da Bawss - Mixtape').
 cd('God Bless Tiny Tim').
 cd('Walking On the Moon').
 cd('Autonervous').
 cd('Manuscription').
 cassete('The Yung & Moore Show').
 cassete('The Human Horn').
-cassete('File da Bawss - Mixtape').
 mp3('Walking on the Moon').
-mp3('Paciji Ples').
-mp3('File da Bawss - Mixtape').
 
 % EXERCICIO 1
 %
@@ -75,13 +63,13 @@ musicosDoVinil:-
 musicosDoVinil.
 
 % i)
-maisQueDoisColabs(A):-
-%	album(A,_),
-	colabora(A,C),
-        colabora(A,D),
-	colabora(A,E),
-	C \= D, C \= E,
-	D \= E.
+maisQueDoisColabs(Art1):-
+	colabora(Art1,Art2),
+	colabora(Art1,Art3),
+	Art2 \= Art3.
+
+
+
 
 % EXERCICIO 2
 %
